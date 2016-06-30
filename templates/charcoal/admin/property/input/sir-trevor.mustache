@@ -5,14 +5,17 @@ DualSelect Options Property Input
 `charcoal/admin/property/input/dualselect`
 --}}
 
- <textarea id="{{inputId}}" class="js-st-instance"></textarea>
+ <textarea id="{{inputId}}" class="js-st-instance col-xs-12"></textarea>
 
 {{#addJs}}
 <script src="{{baseUrl}}assets/admin/scripts/vendors/sir-trevor/sir-trevor.min.js"></script>
+<script src="{{baseUrl}}assets/admin/scripts/charcoal.property.sir-trevor.js"></script>
+<link rel="stylesheet" href="{{baseUrl}}assets/admin/styles/charcoal.property.sir-trevor.css">
+
 <script>
 Charcoal.Admin.manager().add_property_input({
     id: '{{inputId}}',
-    type: 'charcoal/admin/property/input/SirTrevor',
+    type: 'charcoal/admin/property/input/sirTrevor',
     data: {
 
     }

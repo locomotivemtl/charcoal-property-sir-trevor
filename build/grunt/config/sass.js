@@ -7,9 +7,9 @@ module.exports = {
             'assets/dist/styles/charcoal.admin.css': 'assets/src/styles/**/charcoal.admin.scss'
         }
     },
-    vendors: {
+    main: {
         files: {
-            'assets/dist/styles/charcoal.admin.vendors.css': 'assets/src/styles/**/charcoal.admin.vendors.scss'
+            'assets/dist/styles/main.css': 'assets/src/styles/**/main.scss'
         }
     }
 
