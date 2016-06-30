@@ -1,0 +1,37 @@
+{
+    "name": "locomotivemtl/charcoal-property-sir-trevor",
+    "type": "library",
+	"description": "The Sir Trevor content editor for Charcoal",
+    "require": {
+		"php": ">=5.6",
+        "locomotivemtl/charcoal-admin": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8",
+        "squizlabs/php_codesniffer": "^2.4"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "JoelAlphonso",
+            "email": "admin@joeldesign.ca"
+        }
+    ],
+    "minimum-stability": "dev",
+	"autoload": {
+		"psr-4": {
+			"Charcoal\\SirTrevor\\": "src"
+		}
+	},
+	"scripts": {
+		"test": [
+			"@phplint",
+			"@phpunit",
+			"@phpcs"
+		],
+		"phplint": "find {src,tests} -name '*.php' -print0 | xargs -0 -n1 -P8 php -l | grep -v '^No syntax errors detected'; test $? -eq 1",
+		"phpunit": "php vendor/bin/phpunit --configuration tests/phpunit.xml --coverage-text",
+		"phpcs": "php vendor/bin/phpcs -ps --colors --standard=phpcs.xml src/",
+		"phpcbf": "php vendor/bin/phpcbf -ps --colors --standard=phpcs.xml src/ tests/"
+	}
+}

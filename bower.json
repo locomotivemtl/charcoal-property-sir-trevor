@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "charcoal-property-sir-trevor",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+	"sir-trevor-js": "0.4.3"
+  },
+  "devDependencies": {
+    "qunit": "~1.18.0"
+  }
+}
