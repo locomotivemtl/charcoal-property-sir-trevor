@@ -1,0 +1,68 @@
+// ==========================================================================
+// Sir-trevor Overide styles
+// ==========================================================================
+
+.st-block__inner ::-moz-selection {
+    background: $blue; }
+
+.st-block__inner ::selection {
+    background: $blue; }
+
+.st-block-controls__top:before {
+    transition: color 0.15s ease-in-out }
+
+.st-block-controls__top:hover:before {
+    color: $blue; }
+
+.st-block-control {
+    transition: color 0.15s ease-in-out;
+    color: $black; }
+
+.st-block-control:hover {
+    text-decoration: none;
+    color: $blue;
+
+    span {
+        text-decoration: underline;
+    }
+}
+
+.st-block__inner:hover {
+    border-color: $blue; }
+
+.st-block--with-plus:after {
+    color: $blue; }
+
+.st-block__upload-container:hover .st-upload-btn {
+    background: $blue; }
+
+.st-block__messages {
+    border: 2px solid $blue;
+}
+
+.st-block-positioner {
+    border: 0.125em solid $blue;
+}
+
+.st-block-positioner:after {
+    border: 0.125em solid $blue; }
+
+.st-block-positioner__title {
+    color:         $blue;
+    border-bottom: 1px solid $blue; }
+
+.st-block-ui-btn, .st-block-control-ui-btn {
+    color:  $blue;
+    background: none;
+    border: none; }
+
+.st-block-control-ui-btn {
+    border: 2px solid $blue; }
+
+.st-block-ui-btn:hover, .st-block-control-ui-btn:hover,
+.st-block-control-ui-btn:hover {
+    background: $blue; }
+
+.st-format-btn:hover,
+.st-format-btn--is-active {
+    color: $blue; }
