@@ -1,11 +1,11 @@
  {{!--
-DualSelect Options Property Input
+Sir Trevor Property Input
 =============================
 
-`charcoal/admin/property/input/dualselect`
+`charcoal/admin/property/input/sir-trevor`
 --}}
 
- <textarea id="{{inputId}}" class="js-st-instance col-xs-12"></textarea>
+ <textarea name="{{ inputName }}" id="{{inputId}}" class="js-st-instance col-xs-12">{{&inputVal}}</textarea>
 
 {{#addJs}}
 <script src="{{baseUrl}}assets/admin/scripts/vendors/sir-trevor/sir-trevor.min.js"></script>
@@ -17,7 +17,7 @@ Charcoal.Admin.manager().add_property_input({
     id: '{{inputId}}',
     type: 'charcoal/admin/property/input/sirTrevor',
     data: {
-
+        sir_trevor_options: {{& options }}
     }
 });
 </script>
