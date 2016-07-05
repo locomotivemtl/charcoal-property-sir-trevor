@@ -53,12 +53,11 @@ class SirTrevorInput extends AbstractPropertyInput
     // SETTERS
     // ==========================================================================
 
-
     /**
-     * @param mixed $sirTrevorOptions
-     * @return sirTrevorOptions
+     * @param $sirTrevorOptions
+     * @return $this
      */
-    public function setDualSelectOptions($sirTrevorOptions)
+    public function setSirTrevorOptions($sirTrevorOptions)
     {
         $this->sirTrevorOptions = $sirTrevorOptions;
         return $this;
