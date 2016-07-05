@@ -3,7 +3,6 @@
 namespace Charcoal\Admin\Property\Input;
 
 use \Charcoal\Admin\Property\AbstractPropertyInput;
-use \Charcoal\Support\Property\ParsableValueTrait;
 
 /**
  * Sir Trevor Input Property
@@ -12,7 +11,6 @@ use \Charcoal\Support\Property\ParsableValueTrait;
  */
 class SirTrevorInput extends AbstractPropertyInput
 {
-    use ParsableValueTrait;
 
     protected $searchable;
     protected $options;
@@ -67,7 +65,7 @@ class SirTrevorInput extends AbstractPropertyInput
     // ==========================================================================
 
     /**
-     * @param $sirTrevorOptions
+     * @param $options
      * @return $this
      */
     public function setSirTrevorOptions($options)
