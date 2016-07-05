@@ -14,9 +14,8 @@
     "sass",
     "postcss",
     "cssmin",
+    "copy:charcoal",
     "uglify",
-    "svgstore",
-    "svgmin",
     "notify:build"
   ],
 

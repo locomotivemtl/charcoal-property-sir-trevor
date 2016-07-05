@@ -1,23 +1,25 @@
 /**
- * TinyMCE implementation for WYSIWYG inputs
- * charcoal/admin/property/input/tinymce
+ * Sir Trevor Input Property
+ *
+ * charcoal/admin/property/input/sir-trevor
  *
  * Require:
- * - jQuery
- * - tinyMCE
+ * - Sir Trevor
  *
  * @param  {Object}  opts Options for input property
  */
-Charcoal.Admin.Property_Input_SirTrevor = function (opts) {
-    this.input_type             = 'charcoal/admin/property/input/sir-trevor';
-    // Property_Input_DualSelect properties
-    this.input_id               = null;
-    this.sirTrevor_options      = {};
-    this.sirTrevor_blockOptions = {};
-    this._sirTrevor             = null;
+Charcoal.Admin.Property_Input_SirTrevor = function (opts)
+{
+    this.input_type = 'charcoal/admin/property/input/sir-trevor';
+
+    this.input_id       = null;
+    this.editor         = null;
+    this.editor_options = {};
+    this.block_options  = [];
 
     this.set_properties(opts).init();
 };
+
 Charcoal.Admin.Property_Input_SirTrevor.prototype             = Object.create(Charcoal.Admin.Property.prototype);
 Charcoal.Admin.Property_Input_SirTrevor.prototype.constructor = Charcoal.Admin.Property_Input_SirTrevor;
 Charcoal.Admin.Property_Input_SirTrevor.prototype.parent      = Charcoal.Admin.Property.prototype;
@@ -26,64 +28,54 @@ Charcoal.Admin.Property_Input_SirTrevor.prototype.parent      = Charcoal.Admin.P
  * Init plugin
  * @return {thisArg} Chainable.
  */
-Charcoal.Admin.Property_Input_SirTrevor.prototype.init = function () {
-    this.create_sirTrevor();
+Charcoal.Admin.Property_Input_SirTrevor.prototype.init = function ()
+{
+    this.create_editor();
 };
 
-Charcoal.Admin.Property_Input_SirTrevor.prototype.set_properties = function (opts, array) {
-    array                  = array || [];
-    this.input_id          = opts.id || this.input_id;
-    this.sirTrevor_options = opts.sirTrevor_options || opts.data.sirTrevor_options || this.sirTrevor_options;
+Charcoal.Admin.Property_Input_SirTrevor.prototype.set_properties = function (opts) {
+    this.input_id       = opts.id || this.input_id;
+    this.editor_options = opts.data || this.editor_options || {};
+    this.block_options  = this.editor_options.block_options || [];
 
-    var default_options = {
-        el         : $('#' + this.input_id),
-        defaultType: 'Text'
-    };
+    switch ( SirTrevor.config.version.substr(0, 3) ) {
+        case '0.6':
+            this.editor_options.el = $('#'+this.input_id)[0];
 
-    var blockOptions                        = this.sirTrevor_options['block-options'];
-    this.sirTrevor_options['block-options'] = [];
+            SirTrevor.setDefaults({
+                iconUrl: Charcoal.Admin.base_url() + '/assets/admin/images/sir-trevor-icons.svg',
+            });
 
-    this.sirTrevor_options      = $.extend({}, default_options, this.sirTrevor_options);
-    this.sirTrevor_blockOptions = blockOptions;
+            break;
+
+        default:
+            this.editor_options.el = $('#'+this.input_id);
+            break;
+    }
+
+    SirTrevor.setDefaults({
+        uploadUrl    : '/attachments',
+        baseImageUrl : '/sir-trevor-uploads/',
+    });
+
     return this;
 };
 
-Charcoal.Admin.Property_Input_SirTrevor.prototype.create_sirTrevor = function () {
-    var sirTrevorInstance = new SirTrevor.Editor(this.sirTrevor_options);
+Charcoal.Admin.Property_Input_SirTrevor.prototype.create_editor = function () {
+    this.editor = new SirTrevor.Editor(this.editor_options);
 
-    if (this.sirTrevor_blockOptions)
-        sirTrevorInstance.setBlockOptions(this.sirTrevor_blockOptions);
-    this.set_sirTrevor(sirTrevorInstance);
-};
-
-/**
- * Sets the sir-trevor into the current object
- * Might be usefull.
- * @param {sir-trevor Editor} sirTrevor
- * @return {thisArg} Chainable
- */
-Charcoal.Admin.Property_Input_SirTrevor.prototype.set_sirTrevor = function (sirTrevor) {
-    this._sirTrevor = sirTrevor;
-    return this;
-};
-
-/**
- * Returns the sir-trevor object
- * @return {sir-trevor Editor} sir-trevor The sir-trevor object.
- */
-Charcoal.Admin.Property_Input_SirTrevor.prototype.sirTrevor = function () {
-    return this._sirTrevor;
+    $.each(this.block_options, function (block, options) {
+        this.editor.setBlockOptions(block, options);
+    });
 };
 
 /**
  * Destroy what needs to be destroyed
  * @return {sir-trevor Editor} sir-trevor The sir-trevor object.
  */
-Charcoal.Admin.Property_Input_SirTrevor.prototype.destroy = function () {
-    var sirTrevor = this.sirTrevor();
-
-    if (sirTrevor) {
-        sirTrevor.remove();
+Charcoal.Admin.Property_Input_SirTrevor.prototype.destroy = function ()
+{
+    if (this.editor) {
+        this.editor.destroy();
     }
 };
-

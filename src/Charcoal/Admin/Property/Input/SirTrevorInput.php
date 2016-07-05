@@ -2,14 +2,13 @@
 
 namespace Charcoal\Admin\Property\Input;
 
-use Charcoal\Admin\Property\AbstractPropertyInput;
-use Mmes\Support\Traits\ParsableValueTrait;
+use \Charcoal\Admin\Property\AbstractPropertyInput;
+use \Charcoal\Support\Property\ParsableValueTrait;
 
 /**
- * Select Options Input Property
+ * Sir Trevor Input Property
  *
- * > The HTML _select_ (`<select>`) element represents a control that presents a menu of options.
- * — {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select}
+ * @link https://github.com/madebymany/sir-trevor-js
  */
 class SirTrevorInput extends AbstractPropertyInput
 {
@@ -19,23 +18,33 @@ class SirTrevorInput extends AbstractPropertyInput
     protected $options;
     protected $sirTrevorOptions;
 
+    /**
+     * Retrieve the property control classes.
+     *
+     * @return string
+     */
+    public function inputClass()
+    {
+        return $this->inputClass.' js-st-instance col-xs-12';
+    }
+
     // FUNCTIONS
     // ==========================================================================
 
     public function options()
     {
-        $opts = $this->sirTrevorOptions;
+        $opts = $this->sirTrevorOptions();
 
         $optionName = array_keys($opts);
 
-        foreach( $optionName as $optName ) {
+        foreach ($optionName as $optName) {
             $this->options[$optName] = $opts[$optName];
         }
 
         if ($this->options) {
             return json_encode($this->options);
         } else {
-            return [];
+            return '{}';
         }
     }
 
@@ -47,6 +56,10 @@ class SirTrevorInput extends AbstractPropertyInput
      */
     public function sirTrevorOptions()
     {
+        if (!is_array($this->sirTrevorOptions)) {
+            $this->sirTrevorOptions = [];
+        }
+
         return $this->sirTrevorOptions;
     }
 
@@ -57,10 +70,10 @@ class SirTrevorInput extends AbstractPropertyInput
      * @param $sirTrevorOptions
      * @return $this
      */
-    public function setSirTrevorOptions($sirTrevorOptions)
+    public function setSirTrevorOptions($options)
     {
-        $this->sirTrevorOptions = $sirTrevorOptions;
+        $this->sirTrevorOptions = $options;
+
         return $this;
     }
-
 }
