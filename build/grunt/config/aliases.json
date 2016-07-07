@@ -1,6 +1,8 @@
 {
   "default": [
-    "build"
+    "build",
+    "copy:vendor",
+    "copy:admin"
   ],
 
   "sync": [

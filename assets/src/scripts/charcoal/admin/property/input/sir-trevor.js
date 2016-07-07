@@ -13,6 +13,7 @@ Charcoal.Admin.Property_Input_SirTrevor = function (opts)
     this.input_type = 'charcoal/admin/property/input/sir-trevor';
 
     this.input_id       = null;
+    this.$input_id      = null;
     this.editor         = null;
     this.editor_options = {};
     this.block_options  = [];
@@ -34,28 +35,19 @@ Charcoal.Admin.Property_Input_SirTrevor.prototype.init = function ()
 };
 
 Charcoal.Admin.Property_Input_SirTrevor.prototype.set_properties = function (opts) {
-    this.input_id       = opts.id || this.input_id;
+    this.input_id  = opts.id || this.input_id;
+    this.$input_id = $('#' + this.input_id);
+
     this.editor_options = opts.data || this.editor_options || {};
     this.block_options  = this.editor_options.block_options || [];
 
-    switch ( SirTrevor.config.version.substr(0, 3) ) {
-        case '0.6':
-            this.editor_options.el = $('#'+this.input_id)[0];
-
-            SirTrevor.setDefaults({
-                iconUrl: Charcoal.Admin.base_url() + '/assets/admin/images/sir-trevor-icons.svg',
-            });
-
-            break;
-
-        default:
-            this.editor_options.el = $('#'+this.input_id);
-            break;
-    }
+    this.editor_options.el = this.$input_id[0];
+    this.editor_options.language = this.$input_id.closest('[data-lang]').data('lang');
 
     SirTrevor.setDefaults({
-        uploadUrl    : '/attachments',
-        baseImageUrl : '/sir-trevor-uploads/',
+        iconUrl      : Charcoal.Admin.base_url() + 'assets/admin/images/sir-trevor-icons.svg',
+        uploadUrl    : Charcoal.Admin.admin_url() + 'property/sir-trevor/upload',
+        baseImageUrl : Charcoal.Admin.base_url(),
     });
 
     return this;

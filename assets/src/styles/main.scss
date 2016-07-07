@@ -1,3 +1,30 @@
+// Settings
 @import "settings/settings";
-@import "../../../node_modules/sir-trevor/sir-trevor.css";
+
+@import '../../../node_modules/sir-trevor/src/sass/_variables';
+@import '../../../node_modules/sir-trevor/src/sass/_icons';
+
+// Basics
+@import '../../../node_modules/sir-trevor/src/sass/patterns/ui-popup';
+@import '../../../node_modules/sir-trevor/src/sass/utils';
+@import '../../../node_modules/sir-trevor/src/sass/base';
+@import '../../../node_modules/sir-trevor/src/sass/inputs';
+
+@import '../../../node_modules/sir-trevor/src/sass/errors';
+
+// Block Controls
+@import '../../../node_modules/sir-trevor/src/sass/block-addition';
+@import '../../../node_modules/sir-trevor/src/sass/block-addition-top';
+@import '../../../node_modules/sir-trevor/src/sass/block-controls';
+@import '../../../node_modules/sir-trevor/src/sass/block-replacer';
+
+// Blocks
+@import '../../../node_modules/sir-trevor/src/sass/block';
+@import '../../../node_modules/sir-trevor/src/sass/block-positioner';
+@import '../../../node_modules/sir-trevor/src/sass/block-ui';
+
+// Format Bar
+@import '../../../node_modules/sir-trevor/src/sass/format-bar';
+
+// Custom
 @import "objects/sir-trevor";
