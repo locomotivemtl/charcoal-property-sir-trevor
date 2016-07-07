@@ -1,10 +1,10 @@
 // Settings
 @import "settings/settings";
 
-@import '../../../node_modules/sir-trevor/src/sass/_variables';
-@import '../../../node_modules/sir-trevor/src/sass/_icons';
-
 // Basics
+@import 'settings/variables';
+@import '../../../node_modules/sir-trevor/src/sass/icons';
+
 @import '../../../node_modules/sir-trevor/src/sass/patterns/ui-popup';
 @import '../../../node_modules/sir-trevor/src/sass/utils';
 @import '../../../node_modules/sir-trevor/src/sass/base';
@@ -27,4 +27,5 @@
 @import '../../../node_modules/sir-trevor/src/sass/format-bar';
 
 // Custom
+
 @import "objects/sir-trevor";

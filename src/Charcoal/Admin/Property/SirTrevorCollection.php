@@ -41,16 +41,19 @@ class SirTrevorCollection implements
 
     public function blocks()
     {
-        foreach ($this->contentBlocks as $block) {
-            $type = $block['type'];
-            $data = $block['data'];
-            if (isset($this->propertyMetadata['block_templates'][$type])) {
-                $GLOBALS['widget_template'] = $this->propertyMetadata['block_templates'][$type];
-            } else {
-                $GLOBALS['widget_template'] = $this->block_templates[$type];
-            }
 
-            yield $data;
+        if($this->contentBlocks) {
+            foreach ($this->contentBlocks as $block) {
+                $type = $block['type'];
+                $data = $block['data'];
+                if (isset($this->propertyMetadata['block_templates'][$type])) {
+                    $GLOBALS['widget_template'] = $this->propertyMetadata['block_templates'][$type];
+                } else {
+                    $GLOBALS['widget_template'] = $this->block_templates[$type];
+                }
+
+                yield $data;
+            }
         }
     }
 

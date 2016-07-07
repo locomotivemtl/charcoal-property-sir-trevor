@@ -2,67 +2,70 @@
 // Sir-trevor Overide styles
 // ==========================================================================
 
-.st-block__inner ::-moz-selection {
-    background: $blue; }
 
-.st-block__inner ::selection {
-    background: $blue; }
-
-.st-block-controls__top:before {
-    transition: color 0.15s ease-in-out }
-
-.st-block-controls__top:hover:before {
-    color: $blue; }
-
-.st-block-control {
-    transition: color 0.15s ease-in-out;
-    color: $black; }
-
-.st-block-control:hover {
-    text-decoration: none;
-    color: $blue;
-
-    span {
-        text-decoration: underline;
+.st-block-ui-btn__delete {
+    .st-block--textable &,
+    .st-block[data-type="list"] &,
+    .st-block {
+        display: block;
+    }
+    .st-block[data-type="quote"] & {
+        display: block;
     }
 }
 
-.st-block__inner:hover {
-    border-color: $blue; }
 
-.st-block--with-plus:after {
-    color: $blue; }
+.st-block__inner {
 
-.st-block__upload-container:hover .st-upload-btn {
-    background: $blue; }
+    min-height: 70px;
+    margin-left: 0;
+    margin-right: 0;
+    border: #F8F8F8 solid 2px;
+    border-left: #F8F8F8 solid 50px;
+    border-right: #F8F8F8 solid 50px;
+    border-radius: 10px 0 0 10px;
+    padding: 15px;
 
-.st-block__messages {
-    border: 2px solid $blue;
+    .st-block[data-type="quote"] & {
+       margin: 0;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    .st-block--textable & {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
 }
 
-.st-block-positioner {
-    border: 0.125em solid $blue;
+.st-top-controls,
+.st-block-addition {
+    display: initial;
 }
 
-.st-block-positioner:after {
-    border: 0.125em solid $blue; }
+.st-block-addition__button {
+    transition: all $animation-speed ease-in-out;
+}
 
-.st-block-positioner__title {
-    color:         $blue;
-    border-bottom: 1px solid $blue; }
+.st-block-addition-top {
+    display: none;
+}
 
-.st-block-ui-btn, .st-block-control-ui-btn {
-    color:  $blue;
-    background: none;
-    border: none; }
+.st-block-addition__button {
+    color: $accent-color;
 
-.st-block-control-ui-btn {
-    border: 2px solid $blue; }
+    .st-icon {
+        height: 20px;
+        width: 20px;
+        color: inherit;
+    }
 
-.st-block-ui-btn:hover, .st-block-control-ui-btn:hover,
-.st-block-control-ui-btn:hover {
-    background: $blue; }
+    .st-block-addition:hover &,
+    .st-block--active & {
+        color: $accent-color;
+        opacity: 1;
+    }
+}
 
-.st-format-btn:hover,
-.st-format-btn--is-active {
-    color: $blue; }
+.st-block {
+    //background-color: #F8F8F8;
+}
